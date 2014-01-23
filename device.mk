@@ -17,5 +17,12 @@
 ## (2) Also get non-open-source specific aspects if available
 $(call inherit-product-if-exists, vendor/samsung/jfltezm/jfltezm-vendor.mk)
 
+## device overlays
+DEVICE_PACKAGE_OVERLAYS += device/samsung/jfltezm/overlay
+## common overlays
+DEVICE_PACKAGE_OVERLAYS += device/samsung/jf-common/overlay-gsm
+## add tdscdma signal should keep sync with jf-common.mk
+PRODUCT_PROPERTY_OVERRIDES += ro.telephony.ril.v3=newDriverCall,TdScdmaSignalStrength
+
 # Inherit from jf-common
 $(call inherit-product, device/samsung/jf-common/jf-common.mk)
